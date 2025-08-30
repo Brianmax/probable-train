@@ -2,10 +2,9 @@ package com.codigo.spring_boot.controller;
 
 import com.codigo.spring_boot.entity.AvionEntity;
 import com.codigo.spring_boot.repository.AvionRepository;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/avion")
@@ -20,5 +19,12 @@ public class AvionController {
     public AvionEntity findById(@PathVariable Integer id) {
         AvionEntity avionEntity = avionRepository.findById(id).orElse(null);
         return avionEntity;
+    }
+
+    // query params
+    @GetMapping("/find/betweenCapacity")
+    public List<AvionEntity> findBetweenCapacity(@RequestParam(required = true) int min, @RequestParam(required = true) int max) {
+        List<AvionEntity> aviones = avionRepository.findByMinMaxCapacity(min, max);
+        return aviones;
     }
 }

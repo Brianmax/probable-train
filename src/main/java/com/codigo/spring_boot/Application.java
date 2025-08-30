@@ -1,5 +1,6 @@
 package com.codigo.spring_boot;
 
+import com.codigo.spring_boot.controller.AvionController;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
