@@ -16,4 +16,5 @@ public class PilotoEntity {
     private String nombre;
     private String apellido;
     private boolean estado;
+    private String dni;
 }

@@ -4,6 +4,7 @@ import com.codigo.spring_boot.entity.AvionEntity;
 import com.codigo.spring_boot.repository.AvionRepository;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 
 @RestController
