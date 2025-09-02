@@ -2,6 +2,8 @@ package com.codigo.spring_boot.controller;
 
 import com.codigo.spring_boot.entity.PilotoEntity;
 import com.codigo.spring_boot.repository.PilotoRepository;
+import com.codigo.spring_boot.service.PilotoService;
+import com.codigo.spring_boot.service.impl.PilotoServiceImpl;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
@@ -10,14 +12,16 @@ import java.util.Optional;
 @RequestMapping("/api/v1/piloto")
 public class PilotoController {
     private PilotoRepository pilotoRepository;
+    private PilotoService pilotoService;
 
-    public PilotoController(PilotoRepository pilotoRepository) {
+    public PilotoController(PilotoRepository pilotoRepository, PilotoService pilotoService) {
         this.pilotoRepository = pilotoRepository;
+        this.pilotoService = pilotoService;
     }
 
     @PostMapping("/save")
-    public PilotoEntity save(@RequestBody PilotoEntity piloto) {
-        return pilotoRepository.save(piloto);
+    public PilotoEntity save(@RequestParam String dni) {
+        return pilotoService.createPiloto(dni);
     }
 
     @GetMapping("/find/{id}")

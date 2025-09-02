@@ -5,12 +5,18 @@ import com.codigo.spring_boot.entity.PilotoEntity;
 import com.codigo.spring_boot.feingClient.ReniecClient;
 import com.codigo.spring_boot.repository.PilotoRepository;
 import com.codigo.spring_boot.service.PilotoService;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class PilotoServiceImpl implements PilotoService {
     private final PilotoRepository pilotoRepository;
     private final ReniecClient reniecClient;
+    @Value("${reniec.api.token}")
+    private String token;
 
     public PilotoServiceImpl(PilotoRepository pilotoRepository, ReniecClient reniecClient) {
         this.pilotoRepository = pilotoRepository;
@@ -20,7 +26,7 @@ public class PilotoServiceImpl implements PilotoService {
     public PilotoEntity createPiloto(String dni) {
         // traer la informacion del piloto de reniec usando su dni
         // hacemos la consulta hacia la api externa
-        ReniecResponse pilotoInfo = reniecClient.getPersona(dni);
+        ReniecResponse pilotoInfo = reniecClient.getPersona(dni, token);
         // mapeamos la info que llego de reniec a un entity
         PilotoEntity pilotoEntity = new PilotoEntity();
         pilotoEntity.setNombre(pilotoInfo.getFirstName());
