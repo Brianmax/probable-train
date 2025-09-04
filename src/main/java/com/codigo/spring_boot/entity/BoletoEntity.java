@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.Date;
+
 @Getter
 @Setter
 @Entity
@@ -14,6 +16,11 @@ public class BoletoEntity {
     @Column(name = "id_boleto")
     private int id;
     private int asiento;
+    private String clase;
+    @Column(name = "puerta_embarque")
+    private int puertaEmbarque; // puertaembarque // puerta_embarque
+    private Date createdAt;
+    private Date updatedAt;
 
     //relaciones
     @ManyToOne
