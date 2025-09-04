@@ -2,6 +2,7 @@ package com.codigo.spring_boot.controller;
 
 import com.codigo.spring_boot.entity.PilotoEntity;
 import com.codigo.spring_boot.repository.PilotoRepository;
+import com.codigo.spring_boot.response.ResponseBase;
 import com.codigo.spring_boot.service.PilotoService;
 import com.codigo.spring_boot.service.impl.PilotoServiceImpl;
 import org.springframework.web.bind.annotation.*;
@@ -20,7 +21,7 @@ public class PilotoController {
     }
 
     @PostMapping("/save")
-    public PilotoEntity save(@RequestParam String dni) {
+    public ResponseBase save(@RequestParam String dni) {
         return pilotoService.createPiloto(dni);
     }
 
