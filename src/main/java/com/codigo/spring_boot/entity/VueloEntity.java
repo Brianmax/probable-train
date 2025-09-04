@@ -1,10 +1,8 @@
 package com.codigo.spring_boot.entity;
 
 import jakarta.persistence.*;
-import jakarta.persistence.criteria.CriteriaBuilder;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.web.bind.annotation.GetMapping;
 
 import java.sql.Date;
 
@@ -13,7 +11,7 @@ import java.sql.Date;
 @Table(name = "vuelos")
 @Getter
 @Setter
-public class VuelosEntity {
+public class VueloEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_vuelo")

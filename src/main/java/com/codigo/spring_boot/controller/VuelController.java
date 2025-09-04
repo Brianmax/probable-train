@@ -1,6 +1,6 @@
 package com.codigo.spring_boot.controller;
 
-import com.codigo.spring_boot.entity.VuelosEntity;
+import com.codigo.spring_boot.entity.VueloEntity;
 import com.codigo.spring_boot.repository.VueloRepository;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,12 +21,12 @@ public class VuelController {
     }
 
     @GetMapping("/all")
-    public List<VuelosEntity> getAll() {
+    public List<VueloEntity> getAll() {
         return vueloRepository.findAll();
     }
 
     @GetMapping("/find/rangeFecha")
-    public List<VuelosEntity> findRangeFecha(@RequestParam Date fs, @RequestParam Date fll) {
+    public List<VueloEntity> findRangeFecha(@RequestParam Date fs, @RequestParam Date fll) {
         return vueloRepository.findByFechaSalidaAndFechaLlegada(fs, fll);
     }
 }

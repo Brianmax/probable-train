@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
+
 @Getter
 @Setter
 @Entity
@@ -17,4 +19,12 @@ public class PilotoEntity {
     private String apellido;
     private boolean estado;
     private String dni;
+
+    @ManyToMany
+    @JoinTable(
+            name = "vuelo_piloto",
+            joinColumns = @JoinColumn(name = "id_piloto_fk"),
+            inverseJoinColumns = @JoinColumn(name = "id_vuelo_fk")
+    )
+    private List<VueloEntity> vueloEntities;
 }
