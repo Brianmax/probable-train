@@ -1,5 +1,6 @@
 package com.codigo.spring_boot.controller;
 
+import com.codigo.spring_boot.dto.BoletoRequest;
 import com.codigo.spring_boot.entity.BoletoEntity;
 import com.codigo.spring_boot.service.BoletoService;
 import com.codigo.spring_boot.service.impl.BoletoServiceImpl;
@@ -19,7 +20,7 @@ public class BoletoController {
     }
 
     @PostMapping("/save")
-    public BoletoEntity saveBoleto(@RequestBody BoletoEntity boletoEntity) {
-        return boletoService.createBoleto(boletoEntity);
+    public BoletoEntity saveBoleto(@RequestBody BoletoRequest request) {
+        return boletoService.createBoleto(request);
     }
 }

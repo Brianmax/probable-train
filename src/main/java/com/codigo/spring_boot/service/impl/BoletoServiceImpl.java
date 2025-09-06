@@ -1,5 +1,6 @@
 package com.codigo.spring_boot.service.impl;
 
+import com.codigo.spring_boot.dto.BoletoRequest;
 import com.codigo.spring_boot.entity.BoletoEntity;
 import com.codigo.spring_boot.entity.PasajeroEntity;
 import com.codigo.spring_boot.entity.VueloEntity;
@@ -23,7 +24,7 @@ public class BoletoServiceImpl implements BoletoService {
     }
 
     @Override
-    public BoletoEntity createBoleto(BoletoEntity request) {
+    public BoletoEntity createBoleto(BoletoRequest request) {
         // asegurarme de que el pasajero exista en la base de datos
         // asegurarnos de que el vuelo exista
 
@@ -58,7 +59,7 @@ public class BoletoServiceImpl implements BoletoService {
 
         boletoBdSave.setAsiento(request.getAsiento());
         boletoBdSave.setClase(request.getClase());
-        boletoBdSave.setPuertaEmbarque(boletoBdSave.getPuertaEmbarque());
+        boletoBdSave.setPuertaEmbarque(request.getPuertaEmbarque());
 
         VueloEntity vueloBd = optionalVueloBd.get();
         PasajeroEntity pasajeroBd = optionalPasajeroBd.get();
@@ -70,3 +71,6 @@ public class BoletoServiceImpl implements BoletoService {
         return boletoBdSave;
     }
 }
+/* actualizar todos los campos de un boleto excepto por el pasajero*/
+
+// http://localhost:8081/api/v1/boleto/update/{id}
